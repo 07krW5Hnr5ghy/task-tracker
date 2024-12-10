@@ -16,14 +16,23 @@ function renderTasks(){
         const taskSpan = document.createElement("span");
         taskSpan.textContent = task.task;
         taskDiv.appendChild(checkBox);
-        taskDiv.children[0].addEventListener("click",()=>{
-            if(taskDiv.children[0].checked){
-                taskDiv.children[1].classList.add("solved-tasks");
-            }else{
-                taskDiv.children[1].classList.remove("solved-tasks");
-            }
+        taskDiv.children[0].addEventListener("click",(e)=>{
             tasks = tasks.filter(task => task.task !== taskDiv.children[1].textContent);
-            tasks.push({task:taskDiv.children[1].textContent,completed:true});
+            if(task.completed){
+                console.log("checked");
+                checkBox.checked = true;
+                taskDiv.children[1].classList.remove("solved-tasks");
+                tasks = [
+                    {task:taskDiv.children[1].textContent,completed:false},
+                    ...tasks.filter(task => task.task !== taskDiv.children[1].textContent)
+                ];
+            }else{
+                checkBox.checked = false;
+                taskDiv.children[1].classList.add("solved-tasks");
+                tasks.push({task:taskDiv.children[1].textContent,completed:true});
+            }
+            
+            
             window.localStorage.removeItem('tasks');
             window.localStorage.setItem('tasks',JSON.stringify(tasks));
             renderTasks();
