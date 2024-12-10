@@ -39,6 +39,12 @@ function renderTasks(){
         });
         const taskDeleteButton = document.createElement("button");
         taskDeleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+        taskDeleteButton.addEventListener("click",()=>{
+            tasks = tasks.filter(task => task.task !== taskDiv.children[1].textContent);
+            window.localStorage.removeItem('tasks');
+            window.localStorage.setItem('tasks',JSON.stringify(tasks));
+            renderTasks();
+        });
         taskDiv.appendChild(taskSpan);
         taskDiv.appendChild(taskDeleteButton);
         tasksWrapper.appendChild(taskDiv);
