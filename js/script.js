@@ -28,9 +28,11 @@ function renderTasks(){
             window.localStorage.setItem('tasks',JSON.stringify(tasks));
             renderTasks();
         });
+        const taskDeleteButton = document.createElement("button");
+        taskDeleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
         taskDiv.appendChild(taskSpan);
+        taskDiv.appendChild(taskDeleteButton);
         tasksWrapper.appendChild(taskDiv);
-        console.log(task);
         if(task.completed){
             console.log("completed");
             checkBox.checked = true;
