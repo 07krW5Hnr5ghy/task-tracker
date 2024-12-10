@@ -22,10 +22,23 @@ function renderTasks(){
             }else{
                 taskDiv.children[1].classList.remove("solved-tasks");
             }
-            
+            tasks = tasks.filter(task => task.task !== taskDiv.children[1].textContent);
+            tasks.push({task:taskDiv.children[1].textContent,completed:true});
+            window.localStorage.removeItem('tasks');
+            window.localStorage.setItem('tasks',JSON.stringify(tasks));
+            renderTasks();
         });
         taskDiv.appendChild(taskSpan);
         tasksWrapper.appendChild(taskDiv);
+        console.log(task);
+        if(task.completed){
+            console.log("completed");
+            checkBox.checked = true;
+            taskDiv.children[1].classList.add("solved-tasks");
+        }else{
+            checkBox.checked = false;
+            taskDiv.children[1].classList.remove("solved-tasks");
+        }
     });
 }
 renderTasks();
@@ -35,7 +48,7 @@ inputButton.addEventListener("click",()=>{
         console.log("new task");
         const newTask = {
             task:newTaskInput.value,
-            complete:false,
+            completed:false,
         };
         tasks.push(newTask);
         window.localStorage.setItem('tasks',JSON.stringify(tasks));
