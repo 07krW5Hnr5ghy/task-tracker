@@ -11,16 +11,25 @@ function renderTasks(){
     tasksWrapper.innerHTML = "";
     tasks.forEach(task => {
         const taskDiv = document.createElement("div");
+        const checkBox = document.createElement("input");
+        checkBox.type = "checkbox";
         const taskSpan = document.createElement("span");
         taskSpan.textContent = task.task;
+        taskDiv.appendChild(checkBox);
+        taskDiv.children[0].addEventListener("click",()=>{
+            if(taskDiv.children[0].checked){
+                taskDiv.children[1].classList.add("solved-tasks");
+            }else{
+                taskDiv.children[1].classList.remove("solved-tasks");
+            }
+            
+        });
         taskDiv.appendChild(taskSpan);
         tasksWrapper.appendChild(taskDiv);
     });
 }
 renderTasks();
 inputButton.addEventListener("click",()=>{
-    console.log(newTaskInput.value);
-    console.log(newTaskInput.value.length);
     if(newTaskInput.value.length > 0){
 
         console.log("new task");
