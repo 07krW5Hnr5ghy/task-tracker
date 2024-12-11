@@ -11,6 +11,14 @@ body{
     padding: 50px;
     border-radius: 8px;
 }
+.header{
+    text-align: left;
+    width: 26%;
+}
+.header > h3{
+    margin: 0;
+    font-size: 14pt;
+}
 .input-wrapper{
     display: inline-flex;
     flex-direction: column;
@@ -19,7 +27,7 @@ body{
     width: 100%;
 }
 .input{
-    border: 1px solid black;
+    border: 2px solid black;
     display: inline-flex;
     flex-direction: row;
     justify-content: center;
