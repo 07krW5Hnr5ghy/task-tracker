@@ -1,3 +1,42 @@
+body{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.task-tracker-wrapper{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input-wrapper{
+    border: 1px solid black;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.input{
+    border: 1px solid black;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    gap:10px;
+    padding: 5px;
+    border-radius: 8px;
+}
+.input-task{
+    border: none;
+    width: 90%;
+}
+.input-button{
+    background-color: black;
+    color:white;
+    border: none;
+    border-radius:4px;
+}
 .solved-tasks{
     text-decoration: line-through;
 }
