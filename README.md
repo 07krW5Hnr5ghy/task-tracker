@@ -11,7 +11,7 @@ This project is a task tracker.
 
 ## Demo
 
-To view the calendar, open the `index.html` file in a browser.
+To view the task tracker, open the `index.html` file in a browser.
 
 ## Technologies
 
