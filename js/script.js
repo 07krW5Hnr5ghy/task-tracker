@@ -11,9 +11,12 @@ function renderTasks(){
     tasksWrapper.innerHTML = "";
     tasks.forEach(task => {
         const taskDiv = document.createElement("div");
+        taskDiv.classList.add("task");
         const checkBox = document.createElement("input");
+        checkBox.classList.add("checkbox");
         checkBox.type = "checkbox";
         const taskSpan = document.createElement("span");
+        taskSpan.classList.add("task-title");
         taskSpan.textContent = task.task;
         taskDiv.appendChild(checkBox);
         taskDiv.children[0].addEventListener("click",(e)=>{
@@ -39,6 +42,7 @@ function renderTasks(){
         });
         const taskDeleteButton = document.createElement("button");
         taskDeleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+        taskDeleteButton.classList.add("delete-button");
         taskDeleteButton.addEventListener("click",()=>{
             tasks = tasks.filter(task => task.task !== taskDiv.children[1].textContent);
             window.localStorage.removeItem('tasks');
@@ -49,7 +53,6 @@ function renderTasks(){
         taskDiv.appendChild(taskDeleteButton);
         tasksWrapper.appendChild(taskDiv);
         if(task.completed){
-            console.log("completed");
             checkBox.checked = true;
             taskDiv.children[1].classList.add("solved-tasks");
         }else{
@@ -61,8 +64,6 @@ function renderTasks(){
 renderTasks();
 inputButton.addEventListener("click",()=>{
     if(newTaskInput.value.length > 0){
-
-        console.log("new task");
         const newTask = {
             task:newTaskInput.value,
             completed:false,
